@@ -1,0 +1,28 @@
+1. Preparar ambiente
+Install node (nvm)
+npm i -g @angular/cli
+
+2. crear proyecto
+ng new Nombreproyecto
+
+3. estructurar nuestra aplicacion
+definicion de las carpetas para las interfaces de usuario es:
+UI
+  Layouts - PLantillas
+  Shared - Elementos compartidos
+  Modules - Modulos de la app
+
+ng g c ruta/nombrecomponente
+ng g m ruta/nombremodulo
+
+Notas:
+Siempre se elimina la implementacion de los componentes que angular realiza por defecto en el app.module.ts
+Se debe realizar la implementacion del componente en el modulo donde se va a implementar Ejemplo: default.module.ts
+
+para los componentes compartidos se debe agregar el exports en el shared.module.ts y agregar el import en los modulos donde se va a utilizar
+
+configuracion del Routing
+
+path la ruta de la url que se identifica para navgear a un modulo especifico de la aplicacion, si estoy usando layouts siempre se implementa el path del padre y dentro del children el path del modulo final
+
+Bootstrap framework para implementacion de interfaces
