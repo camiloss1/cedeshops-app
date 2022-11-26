@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DefaultModule } from './UI/layouts/default/default.module';
+import { FullwidthModule } from './UI/layouts/fullwidth/fullwidth.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { DefaultModule } from './UI/layouts/default/default.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DefaultModule
+    DefaultModule,
+    FullwidthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

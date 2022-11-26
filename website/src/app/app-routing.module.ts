@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './UI/layouts/default/default.component';
+import { FullwidthComponent } from './UI/layouts/fullwidth/fullwidth.component';
 import { HomeComponent } from './UI/modules/home/home.component';
+import { LoginComponent } from './UI/modules/login/login.component';
 
 
 const routes: Routes = [
@@ -11,6 +13,14 @@ const routes: Routes = [
     children: [{
       path: '',
       component: HomeComponent
+    }]
+  },
+  {
+    path: 'full', 
+    component: FullwidthComponent,
+    children: [{
+      path: 'login',
+      component: LoginComponent
     }]
   }
 ];
