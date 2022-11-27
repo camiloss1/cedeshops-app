@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DefaultModule } from './UI/layouts/default/default.module';
 import { FullwidthModule } from './UI/layouts/fullwidth/fullwidth.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,4 +21,6 @@ import { FullwidthModule } from './UI/layouts/fullwidth/fullwidth.module';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
