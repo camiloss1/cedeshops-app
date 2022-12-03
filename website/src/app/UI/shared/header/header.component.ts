@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,6 +6,16 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  constructor(private router : Router) { }
+export class HeaderComponent implements OnInit {
+  constructor(private router: Router) { }
+  logged: boolean = true;
+  username!: string | null;
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.logged = false;
+      this.username = localStorage.getItem('username');
+    }
+  }
+
+
 }

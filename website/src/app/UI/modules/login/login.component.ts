@@ -53,6 +53,8 @@ login(){
   {
     if(this.loginForm.controls['email'].value == username && this.loginForm.controls['password'].value == password)
     {
+      localStorage.setItem('token',username+'|'+password);
+      localStorage.setItem('username',username);
       Swal.fire({
         title: 'Correcto!',
         text: 'Te has logueado',

@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './UI/layouts/default/default.component';
 import { FullwidthComponent } from './UI/layouts/fullwidth/fullwidth.component';
+import { CartComponent } from './UI/modules/cart/cart.component';
 import { HomeComponent } from './UI/modules/home/home.component';
 import { LoginComponent } from './UI/modules/login/login.component';
 import { RegisterComponent } from './UI/modules/register/register.component';
+import { AuthGuard } from './UI/shared/guard/auth.guard';
 
 
 const routes: Routes = [
@@ -15,6 +17,17 @@ const routes: Routes = [
       path: '',
       component: HomeComponent
     }]
+  },
+  {
+    path: 'default',
+    component: DefaultComponent,
+    children: [
+      {
+        path: 'cart',
+        canActivate: [AuthGuard],
+        component: CartComponent
+      }
+    ]
   },
   {
     path: 'full', 
