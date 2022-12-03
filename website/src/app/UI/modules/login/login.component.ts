@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
-import { Token } from 'src/app/domain/models/User/token';
 import { Router } from '@angular/router';
+import { UserUseCase } from 'src/app/domain/models/User/usecase/userusercase';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +15,8 @@ export class LoginComponent implements OnInit {
   faSquare = faSquare;
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private _userUseCase: UserUseCase
   ) { }
 
   loginForm!: FormGroup;
@@ -52,12 +51,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
     if (this.loginForm.valid) {
       var email: string = this.loginForm.controls['email'].value;
       var password: string = this.loginForm.controls['password'].value;
-      const response = this.http.post<Token>("http://localhost:3001/users/login", { email, password });
-      response.subscribe((data: any) => {
+      this._userUseCase.login(email,password).subscribe((data: any) => {
         if (data) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('username', email);
