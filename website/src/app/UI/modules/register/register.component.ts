@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserUseCase } from 'src/app/domain/models/User/usecase/userusercase';
+import { User } from 'src/app/domain/models/User/user';
+import { UserRegistered } from 'src/app/domain/models/User/userregistered';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   signupForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder,) { }
+  constructor(private formBuilder: FormBuilder, private _userUseCase: UserUseCase) { }
 
   public validationMessages = {
     name: [
@@ -64,5 +68,34 @@ export class RegisterComponent implements OnInit{
   }
   public get f() {
     return this.signupForm.controls
+  }
+  register() {
+    if (this.signupForm.valid) {
+      var user = new User;
+      user.document = this.signupForm.controls['document'].value;
+      user.email = this.signupForm.controls['email'].value;
+      user.name = this.signupForm.controls['name'].value;
+      user.password = this.signupForm.controls['password'].value;
+      user.phone = this.signupForm.controls['phone'].value;
+      this._userUseCase.register(user).subscribe((data: UserRegistered) => {
+        if (data) {
+          Swal.fire({
+            title: 'Usuario Creado',
+            text: 'El usuario ' + data.name + ' fue creado exitosamente',
+            icon: 'success',
+            confirmButtonText: 'continuar'
+          })
+        }
+        else {
+          Swal.fire({
+            title: 'Usuario No Creado',
+            text: 'El usuario no pudo ser creado',
+            icon: 'error',
+            confirmButtonText: 'continuar'
+          })
+        }
+      })
+    }
+
   }
 }
