@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" routerLink="/default/shops">Tiendas</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -18,7 +18,7 @@
             <a class="nav-link" routerLink="/full/login">Login</a>
           </li>
           <li class="nav-item" *ngIf="!logged">
-            <a class="nav-link">{{username}}</a>
+            <a class="nav-link" routerLink="/default/account">{{username}}</a>
           </li>
           <li class="nav-item" *ngIf="!logged">
             <a class="nav-link" (click)="logout()">logout</a>

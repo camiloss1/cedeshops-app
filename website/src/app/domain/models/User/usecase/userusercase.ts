@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { UserGateway } from "../gateway/user-gateway";
+import { Token } from "../token";
 import { User } from "../user";
 
 @Injectable({
@@ -14,5 +15,8 @@ export class UserUseCase {
     }
     register(user:User) {
         return this._userGateway.register(user);
+    }
+    getinfouser(token:Token) {
+        return this._userGateway.getinfouser(token);
     }
 }

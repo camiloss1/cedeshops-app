@@ -31,7 +31,7 @@ export class GenericService {
     }
 
     public get<T>(url?: string, endpoint?: string, params?: string, headers?: HttpHeaders): Observable<any> {
-        const endpointUri = params ? `${endpoint}/` : `${endpoint}`
+        const endpointUri = params ? `${endpoint}?` : `${endpoint}`
         return this.http.get<T>(`${url}/${endpointUri}` + (params ?? ''), { headers })
             .pipe(
                 retryWhen(errors =>

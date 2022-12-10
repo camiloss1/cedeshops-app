@@ -5,6 +5,9 @@ import { DefaultComponent } from './default.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { CartComponent } from '../../modules/cart/cart.component';
+import { AccountComponent } from '../../modules/account/account.component';
+import { ShopsComponent } from '../../modules/shops/shops.component';
+import { ProductsbyshopComponent } from '../../modules/productsbyshop/productsbyshop.component';
 
 
 
@@ -12,7 +15,10 @@ import { CartComponent } from '../../modules/cart/cart.component';
   declarations: [
     DefaultComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    AccountComponent,
+    ShopsComponent,
+    ProductsbyshopComponent
   ],
   imports: [
     CommonModule,

@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './UI/layouts/default/default.component';
 import { FullwidthComponent } from './UI/layouts/fullwidth/fullwidth.component';
+import { AccountComponent } from './UI/modules/account/account.component';
 import { CartComponent } from './UI/modules/cart/cart.component';
 import { HomeComponent } from './UI/modules/home/home.component';
 import { LoginComponent } from './UI/modules/login/login.component';
+import { ProductsbyshopComponent } from './UI/modules/productsbyshop/productsbyshop.component';
 import { RegisterComponent } from './UI/modules/register/register.component';
+import { ShopsComponent } from './UI/modules/shops/shops.component';
 import { AuthGuard } from './UI/shared/guard/auth.guard';
 
 
@@ -26,6 +29,20 @@ const routes: Routes = [
         path: 'cart',
         canActivate: [AuthGuard],
         component: CartComponent
+      },
+      {
+        path: 'account',
+        canActivate: [AuthGuard],
+        component: AccountComponent
+      },
+      {
+        path: 'shops',
+        component: ShopsComponent
+      }
+      ,
+      {
+        path: 'products/:shopname/:id',
+        component: ProductsbyshopComponent
       }
     ]
   },

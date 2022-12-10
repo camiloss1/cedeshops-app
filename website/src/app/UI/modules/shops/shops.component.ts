@@ -3,11 +3,11 @@ import { Shop } from 'src/app/domain/models/Shops/shop';
 import { ShopUseCase } from 'src/app/domain/models/Shops/usecase/shopusercase';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-shops',
+  templateUrl: './shops.component.html',
+  styleUrls: ['./shops.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ShopsComponent implements OnInit {
   constructor(private _shopUseCase: ShopUseCase) { }
   shops: Shop[] | undefined;
   ngOnInit(): void {
